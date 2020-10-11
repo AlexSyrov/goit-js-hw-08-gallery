@@ -33,17 +33,22 @@ function stopDefAction(evt) {
 const lightboxButtonEl = document.querySelector(".lightbox__button");
 const lightboxImageEl = document.querySelector(".lightbox__image");
 
+
 function onGalleryContainerClick(evt) {
   if (evt.target.nodeName !== 'IMG') {
     return;
   } else {
-    document.querySelector('.lightbox.js-lightbox').classList.add('is-open');
     lightboxImageEl.src = evt.target.dataset.source;
     lightboxImageEl.alt = evt.target.alt;
-    lightboxButtonEl.addEventListener('click', onCloseModal);
   }
+  workWithModal();
   stopDefAction(evt);
   console.log(evt.target.dataset.source);
+}
+
+function workWithModal() {
+  document.querySelector('.lightbox.js-lightbox').classList.add('is-open');
+  lightboxButtonEl.addEventListener('click', onCloseModal);
 }
 
 function onCloseModal() {
